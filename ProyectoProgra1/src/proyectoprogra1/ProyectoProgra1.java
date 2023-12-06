@@ -55,6 +55,8 @@ public class ProyectoProgra1 {
                     System.out.println("Probando");
             }
         } while (res_menu != 9);
+        
+        System.out.println("PROBANDO CAMBIO");
     }
 
     public static void agregar() {

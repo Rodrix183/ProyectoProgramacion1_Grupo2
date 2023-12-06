@@ -11,51 +11,79 @@ public class ProyectoProgra1 {
     public static ArrayList<String> listaAutores = new ArrayList<String>();
 
     public static void main(String[] args) {
-        int res_menu;
-        System.out.println("Cambio probando");
-        System.out.println("====Menu====");
-        System.out.println("1) Ingresar Nuevo Libro\n2) Buscar libro por código ISBN\n3) Buscar libro por título del libro\n4) Buscar libros por categoría temática deseada\n5) Eliminar libro por código ISBN"
-                + "\n6) Eliminar libro por categoría temática\n7) Imprimir la información de todos los libros\n8) Imprimir la información de los libros que tengan una categoría temática deseada\n9) Salir");
-
-        res_menu = lectura.nextInt();
-        switch(res_menu){
-            case 1:
-                agregar();
-                break;
-            default:
-                System.out.println("Saliendo...");
-        
-        
-        }
+        int res_menu = 0;
+        do { 
+            try { //Validar que solo sean numeros y nada mas
+                System.out.println("Cambio probando");
+                System.out.println("====Menu====");
+                System.out.println("1) Ingresar Nuevo Libro\n2) Buscar libro por código ISBN\n3) Buscar libro por título del libro\n4) Buscar libros por categoría temática deseada\n5) Eliminar libro por código ISBN"
+                        + "\n6) Eliminar libro por categoría temática\n7) Imprimir la información de todos los libros\n8) Imprimir la información de los libros que tengan una categoría temática deseada\n9) Salir");
+                System.out.println("============");
+                
+                res_menu = lectura.nextInt();
+            } catch (Exception e) {
+                System.out.println("Opción no valida, ingrese solo números");
+            }
+            switch (res_menu) {
+                case 1:
+                    agregar();
+                    break;
+                case 2:
+                    System.out.println("Trabajando en opción 2");
+                    break;
+                case 3:
+                    System.out.println("Trabajando en opción 3");
+                    break;
+                case 4:
+                    System.out.println("Trabajando en opción 4");
+                    break;
+                case 5:
+                    System.out.println("Trabajando en opción 5");
+                    break;
+                case 6:
+                    System.out.println("Trabajando en opción 6");
+                    break;
+                case 7:
+                    System.out.println("Trabajando en opción 7");
+                    break;
+                case 8:
+                    System.out.println("Trabajando en opción 8");
+                    break;
+                default: //opcion de salida
+                    System.out.println("Saliendo...");
+                    res_menu = 9;
+            }
+        } while (res_menu != 9);
     }
 
     public static void agregar() {
-        int salida;
+        int salida = 1;
         String resAutor = "";
-        do {
+        while (salida != 0) {
             System.out.println("Ingrese autor(es): ");
             resAutor = lectura.nextLine();
             lectura.nextLine();
             listaAutores.add(resAutor);
+            
+            //Validar solo números
             try {
                 System.out.println("Desea ingresar otro autor? (1 Para Sí || 0 Para No)");
                 salida = lectura.nextInt();
                 switch (salida) {
-                    case 1:
-                        System.out.println("");
+                    case 1:                        
                         break;
-                    case 0:
-                        System.out.println("");
+                    case 0:                        
+                        salida = 0;
                         break;
                     default:
-                        System.out.println("");
+                        salida = 1;
+                        System.out.println("Opción no válida");
 
                 }
             } catch (Exception e) {
-                System.out.println("Opción no válida");
-                salida = 1;
+                System.out.println("Opción no válida");                
             }
 
-        } while (salida != 0);
+        }
     }
 }

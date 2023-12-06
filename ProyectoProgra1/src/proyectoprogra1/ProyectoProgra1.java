@@ -52,6 +52,7 @@ public class ProyectoProgra1 {
                 default: //opcion de salida
                     System.out.println("Saliendo...");
                     res_menu = 9;
+                    System.out.println("Probando");
             }
         } while (res_menu != 9);
     }

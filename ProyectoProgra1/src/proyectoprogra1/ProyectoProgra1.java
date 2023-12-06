@@ -13,8 +13,7 @@ public class ProyectoProgra1 {
     public static void main(String[] args) {
         int res_menu = 0;
         do {
-            try { //Validar que solo sean numeros y nada mas
-                System.out.println("Cambio probando");
+            try { //Validar que solo sean numeros y nada mas                
                 System.out.println("====Menu====");
                 System.out.println("1) Ingresar Nuevo Libro\n2) Buscar libro por código ISBN\n3) Buscar libro por título del libro\n4) Buscar libros por categoría temática deseada\n5) Eliminar libro por código ISBN"
                         + "\n6) Eliminar libro por categoría temática\n7) Imprimir la información de todos los libros\n8) Imprimir la información de los libros que tengan una categoría temática deseada\n9) Salir");
@@ -45,7 +44,8 @@ public class ProyectoProgra1 {
                     break;
                 case 7: //Imprimir todos los libros
                     for (int i = 0; i < listaLibros.size(); i++) {
-                        System.out.println("TITULO: " + listaLibros.get(i).getTitulo() + " ISBN:" + listaLibros.get(i).getISBN());
+                        System.out.println("TITULO: " + listaLibros.get(i).getTitulo() + " ISBN:" + listaLibros.get(i).getISBN()
+                        + " CATEGORÍA: " + listaLibros.get(i).getCategoria());
                     }
                     break;
                 case 8:
@@ -69,13 +69,13 @@ public class ProyectoProgra1 {
         //Titulo
         System.out.println("Ingrese el título del libro!");
         titulo = lectura.nextLine();
-        lectura.nextLine();        
+        titulo = lectura.nextLine();        
         libroTemporal.setTitulo(titulo);
         
         
         //ISBN
         System.out.println("Ingrese el ISBN!");
-        ISBN = lectura.nextLine();
+        ISBN = lectura.next();
         libroTemporal.setISBN(ISBN);
         
         //Autor(es)
@@ -83,7 +83,7 @@ public class ProyectoProgra1 {
         while (salida != 0) {
             System.out.println("Ingrese autor(es)!");
             resAutor = lectura.nextLine();
-            lectura.nextLine();
+            resAutor = lectura.nextLine();
             listaAutores.add(resAutor);
 
             //Validar solo números
@@ -99,7 +99,6 @@ public class ProyectoProgra1 {
                     default:
                         salida = 1;
                         System.out.println("Opción no válida");
-
                 }
             } catch (Exception e) {
                 System.out.println("Opción no válida");
@@ -110,10 +109,17 @@ public class ProyectoProgra1 {
         //Categoría
         System.out.println("Ingrese la categoría del libro!");
         categoria = lectura.nextLine();
-        lectura.nextLine();
+        categoria = lectura.nextLine();
         libroTemporal.setCategoria(categoria);
                         
         //Agregar el libro recien creado a la lista
-        listaLibros.add(libroTemporal);
+        listaLibros.add(libroTemporal);                
+        
+        System.out.println("TITULO " + listaLibros.get(0).getTitulo());
+        System.out.println("ISBN " + listaLibros.get(0).getISBN());
+        for (int i = 0; i < listaAutores.size(); i++) {
+            System.out.println("AUTOR " + (1+i) + " "+ listaAutores.get(i));
+        }
+        System.out.println("CAT " + listaLibros.get(0).getCategoria());
     }//FIN METODO AGREGAR LIBRO
 }

@@ -9,7 +9,7 @@ public class ProyectoProgra1 {
 
     public static ArrayList<String> listaAutores = new ArrayList<String>();
     public static ArrayList<Libro> listaLibros = new ArrayList<Libro>();
-    
+
     public static void main(String[] args) {
         int res_menu = 0;
         do {
@@ -45,7 +45,7 @@ public class ProyectoProgra1 {
                 case 7: //Imprimir todos los libros
                     for (int i = 0; i < listaLibros.size(); i++) {
                         System.out.println("TITULO: " + listaLibros.get(i).getTitulo() + " ISBN:" + listaLibros.get(i).getISBN()
-                        + " CATEGORÍA: " + listaLibros.get(i).getCategoria());
+                                + " CATEGORÍA: " + listaLibros.get(i).getCategoria());
                     }
                     break;
                 case 8:
@@ -53,31 +53,30 @@ public class ProyectoProgra1 {
                     break;
                 default: //opcion de salida
                     System.out.println("Saliendo...");
-                    res_menu = 9;                    
+                    res_menu = 9;
             }
         } while (res_menu != 9);
-        
+
     }
 
     public static void agregar() {
         int salida = 1;
-        
+
         //Objeto libro
         Libro libroTemporal = new Libro();
         String titulo, ISBN, categoria;
-        
+
         //Titulo
         System.out.println("Ingrese el título del libro!");
         titulo = lectura.nextLine();
-        titulo = lectura.nextLine();        
+        titulo = lectura.nextLine();
         libroTemporal.setTitulo(titulo);
-        
-        
+
         //ISBN
         System.out.println("Ingrese el ISBN!");
         ISBN = lectura.next();
         libroTemporal.setISBN(ISBN);
-        
+
         //Autor(es)
         String resAutor = "";
         while (salida != 0) {
@@ -105,21 +104,24 @@ public class ProyectoProgra1 {
             }
         } //Fin While
         libroTemporal.setAutores(listaAutores);
-        
+
         //Categoría
         System.out.println("Ingrese la categoría del libro!");
         categoria = lectura.nextLine();
         categoria = lectura.nextLine();
         libroTemporal.setCategoria(categoria);
-                        
+
         //Agregar el libro recien creado a la lista
-        listaLibros.add(libroTemporal);                
-        
-        System.out.println("TITULO " + listaLibros.get(0).getTitulo());
+        listaLibros.add(libroTemporal);
+
+        System.out.println("Libro agregado exitosamente!");
+
+        /*System.out.println("TITULO " + listaLibros.get(0).getTitulo());
         System.out.println("ISBN " + listaLibros.get(0).getISBN());
         for (int i = 0; i < listaAutores.size(); i++) {
             System.out.println("AUTOR " + (1+i) + " "+ listaAutores.get(i));
         }
         System.out.println("CAT " + listaLibros.get(0).getCategoria());
+         */
     }//FIN METODO AGREGAR LIBRO
 }

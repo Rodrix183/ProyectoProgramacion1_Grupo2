@@ -1,16 +1,18 @@
 package proyectoprogra1;
 
+import java.util.ArrayList;
+
 public class Libro {
 
     private String titulo;
     private String ISBN;
-    private String autores;
+    private ArrayList <String> autores;
     private String categoria;
 
     public Libro() {
     }
 
-    public Libro(String titulo, String ISBN, String autores, String categoria) {
+    public Libro(String titulo, String ISBN, ArrayList <String> autores, String categoria) {
         this.titulo = titulo;
         this.ISBN = ISBN;
         this.autores = autores;
@@ -33,14 +35,14 @@ public class Libro {
         this.ISBN = ISBN;
     }
 
-    public String getAutores() {
+    public ArrayList<String> getAutores() {
         return autores;
     }
 
-    public void setAutores(String autores) {
+    public void setAutores(ArrayList<String> autores) {
         this.autores = autores;
     }
-
+    
     public String getCategoria() {
         return categoria;
     }

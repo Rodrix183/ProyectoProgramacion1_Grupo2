@@ -28,14 +28,71 @@ public class ProyectoProgra1 {
                     agregar();
                     break;
                 case 2:
-                    System.out.println("Trabajando en opción 2");
+                    System.out.println("buscas un libro por ISBN?");
+                    System.out.println("Ingrese el código ISBN:");
+                    String isbnBusqueda = lectura.next();
+                    Libro libroEncontrado = buscarPorISBN(isbnBusqueda);
+                    if (libroEncontrado != null) {
+                        System.out.println("Libro encontrado:");
+                        System.out.println("Título: " + libroEncontrado.getTitulo());
+                    } else {
+                        System.out.println("No se encontró un libro con ese ISBN.VERIFIQUE y pruebe de nuevo");
+                    }
                     break;
                 case 3:
-                    System.out.println("Trabajando en opción 3");
+                    System.out.println("buscas un libro por titulo?");
+                    System.out.println("Ingrese el título del libro:");
+                    String tituloBusqueda = lectura.nextLine();
+                    tituloBusqueda = lectura.nextLine();
+                    int bandera = 1, confirmacion = 0;
+                    ArrayList<Libro> librosEncontradosPorTitulo = buscarPorTitulo(tituloBusqueda);
+
+                    //RESULTADOS
+                    String resultados="";
+                    for (int i = 0; i < librosEncontradosPorTitulo.size(); i++) {
+                        if (!librosEncontradosPorTitulo.get(i).getTitulo().equals(tituloBusqueda)) {
+                            bandera = 0;
+                        } else {                            
+                            resultados += "Título: " + librosEncontradosPorTitulo.get(i).getTitulo() 
+                                    + " ISBN: " + librosEncontradosPorTitulo.get(i).getISBN()
+                                    + " Categoría: " + librosEncontradosPorTitulo.get(i).getCategoria()
+                                    + "\n";
+                            confirmacion = 1;
+                        }
+
+                    }
+                    
+                    if (confirmacion == 1) {
+                        System.out.println(resultados);
+                    }else if(bandera == 0){
+                        System.out.println("No hay libros registrados!");
+                    }
+
+//                    if (librosEncontradosPorTitulo.isEmpty()) {
+//                        System.out.println("Libros encontrados con ese título:");
+//                        for (Libro libro : librosEncontradosPorTitulo) {
+//                            System.out.println("Título: " + libro.getTitulo());
+//                        }
+//                    } else {
+//                        System.out.println("No se encontraron libros con ese título. Pruebe de nuevo");
+//                    }
                     break;
                 case 4:
-                    System.out.println("Trabajando en opción 4");
+                    System.out.println("Quiere buscar un libro por categoria??");
+                    System.out.println("Ingrese la categoría del libro:");
+                    String categoriaBusqueda = lectura.nextLine();
+                    categoriaBusqueda = lectura.nextLine();
+                    ArrayList<Libro> librosEncontradosPorCategoria = buscarPorCategoria(categoriaBusqueda);
+                    if (!librosEncontradosPorCategoria.isEmpty()) {
+                        System.out.println("Libros encontrados en esa categoría:");
+                        for (Libro libro : librosEncontradosPorCategoria) {
+                            System.out.println("Título: " + libro.getTitulo());
+                        }
+                    } else {
+                        System.out.println("No se encontraron libros en esa categoría.");
+                    }
                     break;
+
                 case 5:
                     System.out.println("Trabajando en opción 5");
                     break;
@@ -116,12 +173,35 @@ public class ProyectoProgra1 {
 
         System.out.println("Libro agregado exitosamente!");
 
-        /*System.out.println("TITULO " + listaLibros.get(0).getTitulo());
-        System.out.println("ISBN " + listaLibros.get(0).getISBN());
-        for (int i = 0; i < listaAutores.size(); i++) {
-            System.out.println("AUTOR " + (1+i) + " "+ listaAutores.get(i));
-        }
-        System.out.println("CAT " + listaLibros.get(0).getCategoria());
-         */
     }//FIN METODO AGREGAR LIBRO
+
+    public static Libro buscarPorISBN(String isbn) {
+        for (Libro libro : listaLibros) {
+            if (libro.getISBN().equals(isbn)) {
+                return libro;
+            }
+        }
+        return null; // Si no se encuentra el libro con ese ISBN
+    }
+
+    public static ArrayList<Libro> buscarPorTitulo(String titulo) {
+        ArrayList<Libro> librosEncontrados = new ArrayList<>();
+        for (Libro libro : listaLibros) {
+            if (libro.getTitulo().equalsIgnoreCase(titulo)) {
+                librosEncontrados.add(libro);
+            }
+        }
+        return librosEncontrados;
+    }
+
+    public static ArrayList<Libro> buscarPorCategoria(String categoria) {
+        ArrayList<Libro> librosEncontrados = new ArrayList<>();
+        for (Libro libro : listaLibros) {
+            if (libro.getCategoria().equalsIgnoreCase(categoria)) {
+                librosEncontrados.add(libro);
+            }
+        }
+        return librosEncontrados;
+    }
+
 }

@@ -245,7 +245,6 @@ public class ProyectoProgra1 {
             System.out.println("¡Ha ocurrido un error! Por favor intente de nuevo.");
         }
 
-
     }//FIN METODO AGREGAR LIBRO
 
     public static Libro buscarPorISBN(String isbn) {
@@ -331,7 +330,8 @@ public class ProyectoProgra1 {
     }
 
     public static void MostrarLibrosCategoria() {
-        String categoriaBuscar;
+        String categoriaBuscar, mensaje;
+        int bandera = 0, bandera2 = 0;
         System.out.println("Ingrese una categoría");
         categoriaBuscar = lectura.nextLine();
         categoriaBuscar = lectura.nextLine();
@@ -351,8 +351,16 @@ public class ProyectoProgra1 {
                         + " POSICIÓN: " + listaLibros.get(i).getPos_estante() + "\nCANTIDAD: " + listaLibros.get(i).getCantidad());
 
                 System.out.println("_________________________________________________");
+                bandera++;                
+            } else{
+                bandera2++;
             }
-
+        }//Fin ciclo for
+        
+        if (bandera >= bandera2) {
+            System.out.println("Se encontraron esos resultados.");            
+        }else if(bandera < bandera2){
+            System.out.println("¡Libro no encontrado con esa categoría!");            
         }
 
     }
